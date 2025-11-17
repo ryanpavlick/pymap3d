@@ -25,7 +25,8 @@ jobs:
           python-version: '3.13'
 
     steps:
-    - uses: actions/checkout@v4
+    - &checkout
+      uses: actions/checkout@v5
     - uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
@@ -33,7 +34,6 @@ jobs:
     - run: pip install .[full,tests,lint]
 
     - run: flake8
-
     - run: mypy
 
     - run: pytest
@@ -48,7 +48,7 @@ jobs:
         python-version: ["3.13"]
 
     steps:
-      - uses: actions/checkout@v4
+      - *checkout
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -73,7 +73,6 @@ jobs:
       #   run: pytest --cov=src --cov-report=xml --cov-append
 
       - name: Upload coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
-          file: ./coverage.xml
           name: Python ${{ matrix.python-version }}
