@@ -72,5 +72,10 @@ if matlab_engine in sys.modules:
         eci_matmap3d = matlab_ecef2eci(eng, True, dt, ecef)
         print("\nMatlab Matmap3D: ECI Coordinates (meters):")
         print(np.array(eci_matmap3d))
-        print("\nAstroPy - Matlab Matmap3D Difference (ECI meters):", astropy_eci - eci_matmap3d)
-        print("Numpy - Matlab Matmap3D Difference (ECI meters):", numpy_eci - eci_matmap3d)
+        print(
+            "\nAstroPy - Matlab Matmap3D Difference (ECI meters):",
+            astropy_eci - eci_matmap3d,
+        )
+        print(
+            "Numpy - Matlab Matmap3D Difference (ECI meters):", numpy_eci - eci_matmap3d
+        )

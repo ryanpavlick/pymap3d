@@ -62,5 +62,8 @@ if __name__ == "__main__":
     if MATLAB:
         print(f"matlab path {R}")
         subprocess.check_call(
-            f'matlab -batch "helper_vdist({ll0[0]}, {ll0[1]}, {N})"', text=True, timeout=90, cwd=R
+            f'matlab -batch "helper_vdist({ll0[0]}, {ll0[1]}, {N})"',
+            text=True,
+            timeout=90,
+            cwd=R,
         )

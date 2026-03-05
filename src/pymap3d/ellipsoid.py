@@ -134,10 +134,22 @@ class Ellipsoid:
         "clarke1860": {"name": "Clarke (1880)", "a": 6378249.145, "b": 6356514.87},
         "helmert": {"name": "Helmert (1906)", "a": 6378200.0, "b": 6356818.17},
         "hayford": {"name": "Hayford (1910)", "a": 6378388.0, "b": 6356911.946},
-        "international1924": {"name": "International (1924)", "a": 6378388.0, "b": 6356911.946},
-        "krassovsky1940": {"name": "Krassovsky (1940)", "a": 6378245.0, "b": 6356863.019},
+        "international1924": {
+            "name": "International (1924)",
+            "a": 6378388.0,
+            "b": 6356911.946,
+        },
+        "krassovsky1940": {
+            "name": "Krassovsky (1940)",
+            "a": 6378245.0,
+            "b": 6356863.019,
+        },
         "wgs66": {"name": "WGS66 (1966)", "a": 6378145.0, "b": 6356759.769},
-        "australian": {"name": "Australian National (1966)", "a": 6378160.0, "b": 6356774.719},
+        "australian": {
+            "name": "Australian National (1966)",
+            "a": 6378160.0,
+            "b": 6356774.719,
+        },
         "international1967": {
             "name": "New International (1967)",
             "a": 6378157.5,
@@ -148,7 +160,11 @@ class Ellipsoid:
         "wgs72": {"name": "WGS-72 (1972)", "a": 6378135.0, "b": 6356750.52001609},
         "grs80": {"name": "GRS-80 (1979)", "a": 6378137.0, "b": 6356752.31414036},
         "wgs84": {"name": "WGS-84 (1984)", "a": 6378137.0, "b": 6356752.31424518},
-        "wgs84_mean": {"name": "WGS-84 (1984) Mean", "a": 6371008.7714, "b": 6371008.7714},
+        "wgs84_mean": {
+            "name": "WGS-84 (1984) Mean",
+            "a": 6371008.7714,
+            "b": 6371008.7714,
+        },
         "iers1989": {"name": "IERS (1989)", "a": 6378136.0, "b": 6356751.302},
         "pz90.11": {"name": "ПЗ-90 (2011)", "a": 6378136.0, "b": 6356751.3618},
         "iers2003": {"name": "IERS (2003)", "a": 6378136.6, "b": 6356751.9},
@@ -171,5 +187,8 @@ class Ellipsoid:
         """Create an Ellipsoid from a name."""
 
         return cls(
-            cls.models[name]["a"], cls.models[name]["b"], name=cls.models[name]["name"], model=name
+            cls.models[name]["a"],
+            cls.models[name]["b"],
+            name=cls.models[name]["name"],
+            model=name,
         )

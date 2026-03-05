@@ -44,7 +44,12 @@ def test_lox_stability(matmap3d):
     clat, clon, rng = 35.0, 140.0, 50000.0  # arbitrary
 
     for i in range(20):
-        for azi in (90 + 10.0 ** (-i), -90 + 10.0 ** (-i), 270 + 10.0 ** (-i), -270 + 10.0 ** (-i)):
+        for azi in (
+            90 + 10.0 ** (-i),
+            -90 + 10.0 ** (-i),
+            270 + 10.0 ** (-i),
+            -270 + 10.0 ** (-i),
+        ):
             lat, lon = loxodrome_direct(clat, clon, rng, azi)
 
             lat_matlab, lon_matlab = reckon(eng, matmap3d, clat, clon, rng, azi)

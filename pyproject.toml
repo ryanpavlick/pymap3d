@@ -22,9 +22,7 @@ readme = {file = ["README.md"], content-type = "text/markdown"}
 version = {attr = "pymap3d.__version__"}
 
 [project.optional-dependencies]
-tests = ["pytest"]
-lint = ["flake8", "flake8-bugbear", "flake8-builtins", "flake8-blind-except", "mypy",
-  "types-python-dateutil", "types-requests"]
+tests = ["pytest", "mypy"]
 coverage = ["pytest-cov"]
 format = ["black[jupyter]", "isort"]
 core = ["python-dateutil", "numpy >= 1.10.0"]
@@ -39,7 +37,9 @@ profile = "black"
 known_third_party = ["pymap3d"]
 
 [tool.mypy]
-files = ["src", "Examples", "scripts"]
+files = ["."]
+install_types = true
+exclude = ["^build([/\\\\]|$)"]
 
 ignore_missing_imports = true
 

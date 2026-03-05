@@ -8,7 +8,13 @@ from pytest import approx
 
 @pytest.mark.parametrize(
     "geodetic_lat,alt_m,geocentric_lat",
-    [(0, 0, 0), (90, 0, 90), (-90, 0, -90), (45, 0, 44.80757678), (-45, 0, -44.80757678)],
+    [
+        (0, 0, 0),
+        (90, 0, 90),
+        (-90, 0, -90),
+        (45, 0, 44.80757678),
+        (-45, 0, -44.80757678),
+    ],
 )
 def test_geodetic_alt_geocentric(geodetic_lat, alt_m, geocentric_lat):
     assert pm.geod2geoc(geodetic_lat, alt_m) == approx(geocentric_lat)
@@ -62,10 +68,14 @@ def test_geodetic_isometric(geodetic_lat, isometric_lat):
     assert isolat == approx(isometric_lat)
     assert isinstance(isolat, float)
 
-    assert pm.geodetic2isometric(radians(geodetic_lat), deg=False) == approx(radians(isometric_lat))
+    assert pm.geodetic2isometric(radians(geodetic_lat), deg=False) == approx(
+        radians(isometric_lat)
+    )
 
     assert pm.isometric2geodetic(isometric_lat) == approx(geodetic_lat)
-    assert pm.isometric2geodetic(radians(isometric_lat), deg=False) == approx(radians(geodetic_lat))
+    assert pm.isometric2geodetic(radians(isometric_lat), deg=False) == approx(
+        radians(geodetic_lat)
+    )
 
 
 def test_numpy_geodetic_isometric():
@@ -76,17 +86,28 @@ def test_numpy_geodetic_isometric():
 
 @pytest.mark.parametrize(
     "geodetic_lat,conformal_lat",
-    [(0, 0), (90, 90), (-90, -90), (45, 44.80768406), (-45, -44.80768406), (89, 88.99327)],
+    [
+        (0, 0),
+        (90, 90),
+        (-90, -90),
+        (45, 44.80768406),
+        (-45, -44.80768406),
+        (89, 88.99327),
+    ],
 )
 def test_geodetic_conformal(geodetic_lat, conformal_lat):
     clat = pm.geodetic2conformal(geodetic_lat)
     assert clat == approx(conformal_lat)
     assert isinstance(clat, float)
 
-    assert pm.geodetic2conformal(radians(geodetic_lat), deg=False) == approx(radians(conformal_lat))
+    assert pm.geodetic2conformal(radians(geodetic_lat), deg=False) == approx(
+        radians(conformal_lat)
+    )
 
     assert pm.conformal2geodetic(conformal_lat) == approx(geodetic_lat)
-    assert pm.conformal2geodetic(radians(conformal_lat), deg=False) == approx(radians(geodetic_lat))
+    assert pm.conformal2geodetic(radians(conformal_lat), deg=False) == approx(
+        radians(geodetic_lat)
+    )
 
 
 def test_numpy_geodetic_conformal():
@@ -123,10 +144,14 @@ def test_numpy_geodetic_rectifying():
 )
 def test_geodetic_authalic(geodetic_lat, authalic_lat):
     assert pm.geodetic2authalic(geodetic_lat) == approx(authalic_lat)
-    assert pm.geodetic2authalic(radians(geodetic_lat), deg=False) == approx(radians(authalic_lat))
+    assert pm.geodetic2authalic(radians(geodetic_lat), deg=False) == approx(
+        radians(authalic_lat)
+    )
 
     assert pm.authalic2geodetic(authalic_lat) == approx(geodetic_lat)
-    assert pm.authalic2geodetic(radians(authalic_lat), deg=False) == approx(radians(geodetic_lat))
+    assert pm.authalic2geodetic(radians(authalic_lat), deg=False) == approx(
+        radians(geodetic_lat)
+    )
 
 
 def test_numpy_geodetic_authalic():

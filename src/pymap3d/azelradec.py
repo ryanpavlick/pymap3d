@@ -69,7 +69,9 @@ def azel2radec_astropy(
     """
     obs = EarthLocation(lat=lat_deg * u.deg, lon=lon_deg * u.deg)
 
-    direc = AltAz(location=obs, obstime=Time(str2dt(time)), az=az_deg * u.deg, alt=el_deg * u.deg)
+    direc = AltAz(
+        location=obs, obstime=Time(str2dt(time)), az=az_deg * u.deg, alt=el_deg * u.deg
+    )
 
     sky = SkyCoord(direc.transform_to(ICRS()))
 
@@ -130,7 +132,9 @@ def radec2azel_astropy(
 
     obs = EarthLocation(lat=lat_deg * u.deg, lon=lon_deg * u.deg)
 
-    points = SkyCoord(Angle(ra_deg, unit=u.deg), Angle(dec_deg, unit=u.deg), equinox="J2000.0")
+    points = SkyCoord(
+        Angle(ra_deg, unit=u.deg), Angle(dec_deg, unit=u.deg), equinox="J2000.0"
+    )
 
     altaz = points.transform_to(AltAz(location=obs, obstime=Time(str2dt(time))))
 

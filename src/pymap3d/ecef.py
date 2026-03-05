@@ -75,7 +75,9 @@ def geodetic2ecef(
         ell = Ellipsoid.from_name("wgs84")
 
     # radius of curvature of the prime vertical section
-    N = ell.semimajor_axis**2 / hypot(ell.semimajor_axis * cos(lat), ell.semiminor_axis * sin(lat))
+    N = ell.semimajor_axis**2 / hypot(
+        ell.semimajor_axis * cos(lat), ell.semiminor_axis * sin(lat)
+    )
     # Compute cartesian (geocentric) coordinates given (curvilinear) geodetic coordinates.
     x = (N + alt) * cos(lat) * cos(lon)
     y = (N + alt) * cos(lat) * sin(lon)
@@ -151,7 +153,10 @@ def ecef2geodetic(
         Beta[~ibad] += (
             (ell.semiminor_axis * u[~ibad] - ell.semimajor_axis * huE[~ibad] + E**2)
             * sin(Beta[~ibad])
-        ) / (ell.semimajor_axis * huE[~ibad] * 1 / cos(Beta[~ibad]) - E**2 * cos(Beta[~ibad]))
+        ) / (
+            ell.semimajor_axis * huE[~ibad] * 1 / cos(Beta[~ibad])
+            - E**2 * cos(Beta[~ibad])
+        )
         iz = ibad & isclose(z, 0)
         i1 = ibad & ~iz & (z > 0)
         i2 = ibad & ~iz & ~i1
@@ -166,7 +171,8 @@ def ecef2geodetic(
                 Beta = atan(huE / u * z / hxy)
                 # eqn. 13
                 Beta += (
-                    (ell.semiminor_axis * u - ell.semimajor_axis * huE + E**2) * sin(Beta)
+                    (ell.semiminor_axis * u - ell.semimajor_axis * huE + E**2)
+                    * sin(Beta)
                 ) / (ell.semimajor_axis * huE * 1 / cos(Beta) - E**2 * cos(Beta))
         except (ArithmeticError, RuntimeWarning):
             if isclose(z, 0):
@@ -203,7 +209,9 @@ def ecef2geodetic(
 
     # inside ellipsoid?
     inside = (
-        x**2 / ell.semimajor_axis**2 + y**2 / ell.semimajor_axis**2 + z**2 / ell.semiminor_axis**2
+        x**2 / ell.semimajor_axis**2
+        + y**2 / ell.semimajor_axis**2
+        + z**2 / ell.semiminor_axis**2
         < 1
     )
 
@@ -402,7 +410,9 @@ def uvw2enu(u, v, w, lat0, lon0, deg: bool = True) -> tuple:
     return East, North, Up
 
 
-def eci2geodetic(x, y, z, t: datetime, ell: Ellipsoid | None = None, *, deg: bool = True) -> tuple:
+def eci2geodetic(
+    x, y, z, t: datetime, ell: Ellipsoid | None = None, *, deg: bool = True
+) -> tuple:
     """
     convert Earth Centered Internal ECI to geodetic coordinates
 

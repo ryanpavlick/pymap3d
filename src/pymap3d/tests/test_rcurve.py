@@ -7,7 +7,8 @@ A = ell.semimajor_axis
 
 
 @pytest.mark.parametrize(
-    "lat,curvature", [(0, A), (90, 0), (-90, 0), (45.0, 4517590.87884893), (-45, 4517590.87884893)]
+    "lat,curvature",
+    [(0, A), (90, 0), (-90, 0), (45.0, 4517590.87884893), (-45, 4517590.87884893)],
 )
 def test_rcurve_parallel(lat, curvature):
     assert pm.parallel(lat) == approx(curvature, abs=1e-9, rel=1e-6)

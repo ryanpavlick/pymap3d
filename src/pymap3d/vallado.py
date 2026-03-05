@@ -64,7 +64,8 @@ def azel2radec(
     dec = asin(sin(el) * sin(lat) + cos(el) * cos(lat) * cos(az))
 
     lha = atan2(
-        -(sin(az) * cos(el)) / cos(dec), (sin(el) - sin(lat) * sin(dec)) / (cos(dec) * cos(lat))
+        -(sin(az) * cos(el)) / cos(dec),
+        (sin(el) - sin(lat) * sin(dec)) / (cos(dec) * cos(lat)),
     )
 
     lst = datetime2sidereal(time, lon)  # lon, ra in RADIANS
@@ -124,7 +125,8 @@ def radec2azel(
     el = asin(sin(lat) * sin(dec) + cos(lat) * cos(dec) * cos(lha))
     # %% combine Eq. 4-13 and 4-14 p. 268
     az = atan2(
-        -sin(lha) * cos(dec) / cos(el), (sin(dec) - sin(el) * sin(lat)) / (cos(el) * cos(lat))
+        -sin(lha) * cos(dec) / cos(el),
+        (sin(dec) - sin(el) * sin(lat)) / (cos(el) * cos(lat)),
     )
 
     return degrees(az) % 360.0, degrees(el)

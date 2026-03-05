@@ -8,6 +8,7 @@ This requires a Google Cloud key, and costs a couple US cents per query.
 
 TODO: Would like to instead query a larger region, would OSM be an option?
 """
+
 import functools
 from argparse import ArgumentParser
 from pathlib import Path
@@ -21,7 +22,11 @@ URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 
 @functools.lru_cache()
 def get_place_coords(
-    place_type: str, latitude: float, longitude: float, search_radius_km: int, keyfn: Path
+    place_type: str,
+    latitude: float,
+    longitude: float,
+    search_radius_km: int,
+    keyfn: Path,
 ) -> pandas.DataFrame:
     """
     Get places using Google Maps Places API
@@ -62,11 +67,16 @@ if __name__ == "__main__":
         help="Place type to search: https://developers.google.com/places/supported_types",
     )
     p.add_argument(
-        "searchloc", help="initial latituude, longitude to search from", nargs=2, type=float
+        "searchloc",
+        help="initial latituude, longitude to search from",
+        nargs=2,
+        type=float,
     )
     p.add_argument("radius", help="search radius (kilometers)", type=int)
     p.add_argument("refloc", help="reference location (lat, lon)", nargs=2, type=float)
-    p.add_argument("-k", "--keyfn", help="Google Places API key file", default="~/googlemaps.key")
+    p.add_argument(
+        "-k", "--keyfn", help="Google Places API key file", default="~/googlemaps.key"
+    )
     a = p.parse_args()
 
     place_coords = get_place_coords(a.place_type, *a.searchloc, a.radius, a.keyfn)

@@ -86,7 +86,9 @@ def ned2dca(n, e, d, heading, deg: bool = True):
     return dr, cr, above
 
 
-def ecef2dca(x, y, z, lat0, lon0, h0, heading, ell: Ellipsoid | None = None, deg: bool = True):
+def ecef2dca(
+    x, y, z, lat0, lon0, h0, heading, ell: Ellipsoid | None = None, deg: bool = True
+):
     """
     Converts ECEF (Earth-Centered, Earth-Fixed) coordinates to DCA (Downrange, Crossrange, Above).
     """
@@ -96,7 +98,15 @@ def ecef2dca(x, y, z, lat0, lon0, h0, heading, ell: Ellipsoid | None = None, deg
 
 
 def dca2ecef(
-    dr, cr, above, lat0, lon0, h0, heading, ell: Ellipsoid | None = None, deg: bool = True
+    dr,
+    cr,
+    above,
+    lat0,
+    lon0,
+    h0,
+    heading,
+    ell: Ellipsoid | None = None,
+    deg: bool = True,
 ):
     """
     Converts DCA (Downrange, Crossrange, Above) coordinates to ECEF (Earth-Centered, Earth-Fixed) coordinates.
@@ -117,7 +127,15 @@ def geodetic2dca(
 
 
 def dca2geodetic(
-    dr, cr, above, lat0, lon0, h0, heading, ell: Ellipsoid | None = None, deg: bool = True
+    dr,
+    cr,
+    above,
+    lat0,
+    lon0,
+    h0,
+    heading,
+    ell: Ellipsoid | None = None,
+    deg: bool = True,
 ):
     """
     Converts DCA (Downrange, Crossrange, Above) coordinates to geodetic coordinates (latitude, longitude, altitude).

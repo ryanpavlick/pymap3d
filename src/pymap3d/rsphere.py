@@ -90,7 +90,9 @@ def rectifying(ell: Ellipsoid | None = None) -> float:
     if ell is None:
         ell = Ellipsoid.from_name("wgs84")
 
-    return ((ell.semimajor_axis ** (3 / 2) + ell.semiminor_axis ** (3 / 2)) / 2) ** (2 / 3)
+    return ((ell.semimajor_axis ** (3 / 2) + ell.semiminor_axis ** (3 / 2)) / 2) ** (
+        2 / 3
+    )
 
 
 def euler(
@@ -121,7 +123,12 @@ def euler(
         radius of sphere
     """
     if not deg:
-        lat1, lon1, lat2, lon2 = degrees(lat1), degrees(lon1), degrees(lat2), degrees(lon2)
+        lat1, lon1, lat2, lon2 = (
+            degrees(lat1),
+            degrees(lon1),
+            degrees(lat2),
+            degrees(lon2),
+        )
 
     try:
         lat1, lat2 = asarray(lat1), asarray(lat2)

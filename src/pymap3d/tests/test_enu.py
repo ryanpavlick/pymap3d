@@ -40,7 +40,8 @@ def test_array_enu():
 
 
 @pytest.mark.parametrize(
-    "enu,lla,xyz", [((0, 0, 0), (0, 0, 0), (A, 0, 0)), ((0, 0, 1000), (0, 0, 0), (A + 1000, 0, 0))]
+    "enu,lla,xyz",
+    [((0, 0, 0), (0, 0, 0), (A, 0, 0)), ((0, 0, 1000), (0, 0, 0), (A + 1000, 0, 0))],
 )
 def test_enu_ecef(enu, lla, xyz):
     x, y, z = pm.enu2ecef(*enu, *lla)

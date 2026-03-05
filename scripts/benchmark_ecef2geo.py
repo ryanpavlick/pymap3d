@@ -2,6 +2,7 @@
 """
 benchmark ecef2geodetic
 """
+
 import argparse
 import time
 
