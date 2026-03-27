@@ -5,6 +5,7 @@ import from Numpy, and if not available fallback to math stdlib
 from __future__ import annotations
 
 try:
+    from numpy import arccos as acos
     from numpy import arcsin as asin
     from numpy import arcsinh as asinh
     from numpy import arctan as atan
@@ -12,9 +13,11 @@ try:
     from numpy import arctanh as atanh
     from numpy import (
         cbrt,
+        copysign,
         cos,
         degrees,
         exp,
+        fmod,
         hypot,
         inf,
         isclose,
@@ -30,14 +33,17 @@ try:
     )
 except ImportError:
     from math import (  # type: ignore
+        acos,
         asin,
         asinh,
         atan,
         atan2,
         atanh,
+        copysign,
         cos,
         degrees,
         exp,
+        fmod,
         hypot,
         inf,
         isclose,
@@ -80,15 +86,18 @@ except ImportError:
 
 
 __all__ = [
+    "acos",
     "asin",
     "asinh",
     "atan",
     "atan2",
     "atanh",
     "cbrt",
+    "copysign",
     "cos",
     "degrees",
     "exp",
+    "fmod",
     "hypot",
     "inf",
     "isclose",
